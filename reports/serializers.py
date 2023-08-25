@@ -10,9 +10,11 @@ class DailyReportCreateSerializer(serializers.ModelSerializer):
         
 
 class DailyReportSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField()
+    user_nickname = serializers.CharField(source='user.nick_name',read_only=True)
     class Meta:
         model = DailyReport
-        fields = '__all__'
+        fields = ['user','user_nickname','total']
         depth = 1
     
 class WeekReportSerializer(serializers.ModelSerializer):
