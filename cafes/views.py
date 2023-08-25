@@ -1,4 +1,4 @@
-<<<<<<<<< Temporary merge branch 1
+
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -7,7 +7,7 @@ from rest_framework.generics import get_object_or_404
 
 from .models import *
 from .serializers import *
-=========
+
 from django.shortcuts import render
 
 
