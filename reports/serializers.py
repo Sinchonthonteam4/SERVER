@@ -1,6 +1,10 @@
 from rest_framework import serializers
+
 from .models import DailyReport
 from cafes.models import Drink, Cafe
+from accounts.models import University, User
+
+import datetime
 
 class DailyReportCreateSerializer(serializers.ModelSerializer):
     
@@ -16,6 +20,3 @@ class DailyReportSerializer(serializers.ModelSerializer):
         model = DailyReport
         fields = ['user','user_email','total']
         depth = 1
-    
-class WeekReportSerializer(serializers.ModelSerializer):
-    pass
