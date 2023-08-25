@@ -20,3 +20,11 @@ class DailyReportSerializer(serializers.ModelSerializer):
         model = DailyReport
         fields = ['user','user_email','total']
         depth = 1
+
+# WeekReport
+class WeekReportSerilaizer(serializers.ModelSerializer):
+    def __init__(self, total, average, compare, money):
+        self.total = total,
+        self.average = average,
+        self.compare = compare,
+        self.money = money
