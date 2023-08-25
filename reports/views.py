@@ -49,6 +49,3 @@ class DailyReportRetrieveDestroyView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     
 
-class ListAPIView(generics.ListAPIView):
-    queryset = DailyReport.objects.all()
-    serializer_class = ChallengeSerializer
