@@ -14,7 +14,9 @@ class DailyReportCreateSerializer(serializers.ModelSerializer):
         
 
 class DailyReportSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField()
+    user_email = serializers.CharField(source='user.email',read_only=True)
     class Meta:
         model = DailyReport
-        fields = '__all__'
+        fields = ['user','user_email','total']
         depth = 1
