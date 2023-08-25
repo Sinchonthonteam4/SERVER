@@ -5,16 +5,16 @@ class Command(BaseCommand):
     help = 'Initialize Cafes, Drinks'
     Cafes = [  
         {
-            'cafe': 1,
+            'cafe': '스타벅스',
         },  
         {
-            'cafe': 2,
+            'cafe': '이디야커피',
         },     
         {
-            'cafe': 3,
+            'cafe': '투썸플레이스',
         },
         {
-            'cafe': 4,
+            'cafe': '기타',
         },
     ]
 
