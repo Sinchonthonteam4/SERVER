@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .models import DailyReport
 from cafes.models import Cafe, Drink
@@ -11,7 +11,8 @@ from .serializers import DailyReportSerializer, DailyReportCreateSerializer
 
 class DailyReportCreateListView(generics.ListCreateAPIView):
     queryset = DailyReport.objects.all()
-
+    permission_classes = [AllowAny]
+    
     def get_serializer_class(self):
         if (self.request.method == 'GET'):
             return DailyReportSerializer
@@ -21,9 +22,12 @@ class DailyReportCreateListView(generics.ListCreateAPIView):
         drink_id = request.data['drink']
         cups = request.data['cups']
         drink = Drink.objects.get(id=drink_id)
+        user = request.user.id
+        
         
         total =  int (drink.caffeine) * int(cups)
         dr = {
+            'user': user,
             'drink' : drink_id,
             'cups' : cups,
             'total' : total
@@ -41,3 +45,6 @@ class DailyReportCreateListView(generics.ListCreateAPIView):
 class DailyReportRetrieveDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = DailyReport.objects.all()
     serializer_class = DailyReportSerializer
+    
+    permission_classes = [IsAuthenticated]
+    
