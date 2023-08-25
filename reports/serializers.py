@@ -15,10 +15,10 @@ class DailyReportCreateSerializer(serializers.ModelSerializer):
 
 class DailyReportSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
-    user_nickname = serializers.CharField(source='user.nick_name',read_only=True)
+    user_email = serializers.CharField(source='user.email',read_only=True)
     class Meta:
         model = DailyReport
-        fields = ['user','user_nickname','total']
+        fields = ['user','user_email','total']
         depth = 1
 
 # WeekReport
