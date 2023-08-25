@@ -11,12 +11,10 @@ from rest_framework.views import APIView
 
 from .models import DailyReport
 from cafes.models import Cafe, Drink
-<<<<<<<<< Temporary merge branch 1
-from .serializers import DailyReportSerializer, DailyReportCreateSerializer, ChallengeSerializer
-=========
-from .serializers import DailyReportSerializer, DailyReportCreateSerializer
+from .serializers import DailyReportSerializer, DailyReportCreateSerializer, WeekReportSerilaizer
 from accounts.models import User
->>>>>>>>> Temporary merge branch 2
+
+from datetime import datetime, timedelta
 
 class DailyReportCreateListView(generics.ListCreateAPIView):
     queryset = DailyReport.objects.all()
@@ -69,5 +67,4 @@ class DailyReportAPIView(APIView):
         data.pop('total')
         data.pop('user')
         return Response(data,status=status.HTTP_200_OK)
-        
->>>>>>>>> Temporary merge branch 2
+ 
