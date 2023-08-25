@@ -12,6 +12,11 @@ from .models import DailyReport
 from cafes.models import Cafe, Drink
 from .serializers import DailyReportSerializer, DailyReportCreateSerializer
 from accounts.models import User
+from django.core.exceptions import ValidationError 
+
+
+from datetime import *
+
 
 class DailyReportCreateListView(generics.ListCreateAPIView):
     queryset = DailyReport.objects.all()
@@ -64,4 +69,32 @@ class DailyReportAPIView(APIView):
         data.pop('total')
         data.pop('user')
         return Response(data,status=status.HTTP_200_OK)
-        
+
+
+# Week Report
+class WeekReportAPIView(generics.ListAPIView):
+    queryset = DailyReport.objects.all()
+    def get(self, request):
+        queryset = DailyReport.objects.filter(date__gte= datetime.now()-timedelta(weeks=1),user=request.user)
+    
+        total = 0
+        average = 0
+        cnt = 0
+        cups = 0
+        for query in queryset:
+            total += int(query.total)
+            cnt += 1
+            cups += int(query.cups)
+        if cnt>0:
+            average = total / cnt
+        else:
+            average = 0
+        compare = total - 2800
+        money = 4000 * cups
+        data =  {
+                    'total': total,
+                    'average': average,
+                    'compare': compare,
+                    'money': money
+                }
+        return Response(data,status=status.HTTP_200_OK)

@@ -5,4 +5,5 @@ from .views import *
 urlpatterns = [
     path('', DailyReportCreateListView.as_view()),
     path('daily/',DailyReportAPIView.as_view()),
+    path('weekly/',WeekReportAPIView.as_view()),
 ]
