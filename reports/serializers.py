@@ -22,5 +22,9 @@ class DailyReportSerializer(serializers.ModelSerializer):
         depth = 1
 
 # WeekReport
-class WeekReportSerilizer(serializers.ModelSerializer):
-    pass
+class WeekReportSerilaizer(serializers.ModelSerializer):
+    def __init__(self, total, average, compare, money):
+        self.total = total,
+        self.average = average,
+        self.compare = compare,
+        self.money = money
