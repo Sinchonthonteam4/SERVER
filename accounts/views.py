@@ -36,15 +36,10 @@ class SignupView(APIView):
     def post(self, request):
         data             = json.loads(request.body)
         try:
-            
+            data['university'] = University.objects.get(univ_name=data['university']).id
+            print(data['university'])
             serializer_class = UserSignUpSerializer(data=data)
-            if serializer_class.is_valid():
-                # univ = request.body.get('HTTP_AUTHORIZATION',False)
-                # if univ:
-                #     university = get_object_or_404(University, pk=data['university'])
-                #     serializer_class.save(university=university)
-                # else:
-                    
+            if serializer_class.is_valid():    
                 serializer_class.save()
                 return Response({
                         "message": "Signup Success"
@@ -56,19 +51,19 @@ class SignupView(APIView):
         
 class UserAPIView(APIView):
     # 토큰으로 로그인
-    def get(self, request):
-        try:
-            token = request.META.get('HTTP_AUTHORIZATION',False)[7:]
-            if token:
-                token = str(token).encode("utf-8")
-            access = token
-            payload = jwt.decode(access,SECRET_KEY,algorithms=['HS256'])
-            pk = payload.get('user_id')
-            user = get_object_or_404(User, pk=pk)
-            serializer = UserModelSerializer(instance=user)
-            return Response({'user':serializer.data}, status=status.HTTP_200_OK)
-        except(jwt.exceptions.ExpiredSignatureError):
-            return Response({"message" : "You need to refresh"},status=status.HTTP_400_BAD_REQUEST)
+    # def get(self, request):
+    #     try:
+    #         token = request.META.get('HTTP_AUTHORIZATION',False)[7:]
+    #         if token:
+    #             token = str(token).encode("utf-8")
+    #         access = token
+    #         payload = jwt.decode(access,SECRET_KEY,algorithms=['HS256'])
+    #         pk = payload.get('user_id')
+    #         user = get_object_or_404(User, pk=pk)
+    #         serializer = UserModelSerializer(instance=user)
+    #         return Response({'user':serializer.data}, status=status.HTTP_200_OK)
+    #     except(jwt.exceptions.ExpiredSignatureError):
+    #         return Response({"message" : "You need to refresh"},status=status.HTTP_400_BAD_REQUEST)
             
     # id pw 로 로그인
     def post(self, request):

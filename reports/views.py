@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.core.exceptions import ValidationError
 
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -10,8 +11,10 @@ from rest_framework.views import APIView
 
 from .models import DailyReport
 from cafes.models import Cafe, Drink
-from .serializers import DailyReportSerializer, DailyReportCreateSerializer
+from .serializers import DailyReportSerializer, DailyReportCreateSerializer, WeekReportSerilaizer
 from accounts.models import User
+
+from datetime import datetime, timedelta
 from django.core.exceptions import ValidationError 
 
 
@@ -64,11 +67,10 @@ class DailyReportAPIView(APIView):
     def get(self, request):
         reports = DailyReport.objects.filter(user=request.user)
         data = DailyReportSerializer(instance=reports.last()).data
-        print(data)
         data['diff'] = data['total']-400
+        data['user_email'] = str(data['user_email']).split('@')[0]
         data.pop('total')
         data.pop('user')
-        return Response(data,status=status.HTTP_200_OK)
 
 
 # Week Report
@@ -98,3 +100,4 @@ class WeekReportAPIView(generics.ListAPIView):
                     'money': money
                 }
         return Response(data,status=status.HTTP_200_OK)
+ 
