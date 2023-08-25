@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     'http://127.0.0.1:8000',
     '127.0.0.1',
     # 배포된 백엔드 주소 추가하기
-
+    'port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app',
 ]
 
 # CORS 설정
