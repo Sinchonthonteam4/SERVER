@@ -59,8 +59,8 @@ class DailyReportAPIView(APIView):
     def get(self, request):
         reports = DailyReport.objects.filter(user=request.user)
         data = DailyReportSerializer(instance=reports.last()).data
-        print(data)
         data['diff'] = data['total']-400
+        data['user_email'] = str(data['user_email']).split('@')[0]
         data.pop('total')
         data.pop('user')
         return Response(data,status=status.HTTP_200_OK)
