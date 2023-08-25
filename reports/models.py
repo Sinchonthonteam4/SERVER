@@ -8,7 +8,7 @@ class DailyReport(models.Model):
     
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE, null=True, blank=True, related_name='dailyreports')
     cups = models.IntegerField(default = 1)
-    total = models.IntegerField(default = 100)
+    total = models.IntegerField(default = 0)
     
     def __str__(self):
         return f'총 카페인 섭취량: {self.total} 음료: {self.drink}'
