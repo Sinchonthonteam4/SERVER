@@ -36,15 +36,10 @@ class SignupView(APIView):
     def post(self, request):
         data             = json.loads(request.body)
         try:
-            
+            data['university'] = University.objects.get(univ_name=data['university']).id
+            print(data['university'])
             serializer_class = UserSignUpSerializer(data=data)
-            if serializer_class.is_valid():
-                # univ = request.body.get('HTTP_AUTHORIZATION',False)
-                # if univ:
-                #     university = get_object_or_404(University, pk=data['university'])
-                #     serializer_class.save(university=university)
-                # else:
-                    
+            if serializer_class.is_valid():    
                 serializer_class.save()
                 return Response({
                         "message": "Signup Success"
