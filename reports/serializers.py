@@ -18,3 +18,7 @@ class DailyReportSerializer(serializers.ModelSerializer):
         model = DailyReport
         fields = '__all__'
         depth = 1
+
+# WeekReport
+class WeekReportSerilizer(serializers.ModelSerializer):
+    pass

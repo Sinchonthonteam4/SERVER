@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .models import DailyReport
 from cafes.models import Cafe, Drink
-from .serializers import DailyReportSerializer, DailyReportCreateSerializer, ChallengeSerializer
+from .serializers import DailyReportSerializer, DailyReportCreateSerializer
 
 class DailyReportCreateListView(generics.ListCreateAPIView):
     queryset = DailyReport.objects.all()
