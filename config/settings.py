@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 장고 앱
     'reports',
+    'cafes',
 ]
 
 MIDDLEWARE = [
