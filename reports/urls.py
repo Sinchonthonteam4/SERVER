@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:pk>',DailyReportRetrieveDestroyView.as_view()),
     path('daily/',DailyReportAPIView.as_view()),
 
+    path('weekly/',WeekReportAPIView.as_view()),
 ]
