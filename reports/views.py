@@ -5,9 +5,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
+from rest_framework.views import APIView
+
+
 from .models import DailyReport
 from cafes.models import Cafe, Drink
 from .serializers import DailyReportSerializer, DailyReportCreateSerializer
+from accounts.models import User
 
 class DailyReportCreateListView(generics.ListCreateAPIView):
     queryset = DailyReport.objects.all()
@@ -19,16 +23,18 @@ class DailyReportCreateListView(generics.ListCreateAPIView):
         return DailyReportCreateSerializer
     
     def create(self, request, *args, **kwargs):
-        drink_id = request.data['drink']
+        drink_name = request.data['drink']
         cups = request.data['cups']
-        drink = Drink.objects.get(id=drink_id)
+        cafe_name = request.data['cafe']
+        cafe = Cafe.objects.get(cafe=cafe_name)
+        drink = Drink.objects.get(drink=drink_name,cafe=cafe)
         user = request.user.id
         
         
         total =  int (drink.caffeine) * int(cups)
         dr = {
             'user': user,
-            'drink' : drink_id,
+            'drink' : drink,
             'cups' : cups,
             'total' : total
         }
@@ -48,4 +54,14 @@ class DailyReportRetrieveDestroyView(generics.RetrieveUpdateDestroyAPIView):
     
     permission_classes = [IsAuthenticated]
     
-
+class DailyReportAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request):
+        reports = DailyReport.objects.filter(user=request.user)
+        data = DailyReportSerializer(instance=reports.last()).data
+        print(data)
+        data['diff'] = data['total']-400
+        data.pop('total')
+        data.pop('user')
+        return Response(data,status=status.HTTP_200_OK)
+        
