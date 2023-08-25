@@ -168,7 +168,7 @@ class Command(BaseCommand):
             
         for drink in self.Drinks:
             Drink.objects.get_or_create(
-                cafe = drink['cafe'],
+                cafe = drink['cafe'], 
                 drink = drink['drink'],
                 caffeine = drink['caffeine']
             )
