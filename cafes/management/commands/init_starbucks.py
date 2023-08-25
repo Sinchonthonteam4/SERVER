@@ -26,7 +26,7 @@ class Command(BaseCommand):
         },
         {
             'cafe': 1,
-            'drink': '카라멜 마키아토',
+            'drink': '',
             'caffeine': 75,
         },
         {
@@ -36,32 +36,32 @@ class Command(BaseCommand):
         },
         {
             'cafe': 1,
-            'drink': '카페 라떼',
-            'caffeine': 75,
-        },
-        {
-            'cafe': 1,
-            'drink': '카페 모카',
-            'caffeine': 95,
-        },
-        {
-            'cafe': 1,
             'drink': '에스프레소',
             'caffeine': 75,
         },
         {
             'cafe': 1,
-            'drink': '얼 그레이 티',
+            'drink': '카페라떼',
+            'caffeine': 95,
+        },
+        {
+            'cafe': 1,
+            'drink': '카푸치노',
+            'caffeine': 75,
+        },
+        {
+            'cafe': 1,
+            'drink': '카라멜마키아토',
             'caffeine': 50,
         },
         {
             'cafe': 1,
-            'drink': '자몽 허니 블랙 티',
+            'drink': '자몽허니블랙티',
             'caffeine': 70,
         },
         {
             'cafe': 1,
-            'drink': '자바 칩 프라푸치노',
+            'drink': '자바칩프라푸치노',
             'caffeine': 100,
         },
         {
@@ -71,7 +71,7 @@ class Command(BaseCommand):
         },
         {
             'cafe': 2,
-            'drink': '카라멜 마키아토',
+            'drink': '카라멜마키아토',
             'caffeine': 232,
         },
         {
@@ -81,12 +81,12 @@ class Command(BaseCommand):
         },
         {
             'cafe': 2,
-            'drink': '카페 라떼',
+            'drink': '카페라떼',
             'caffeine': 348,
         },
         {
             'cafe': 2,
-            'drink': '카페 모카',
+            'drink': '카페모카',
             'caffeine': 365,
         },
         {
@@ -96,22 +96,22 @@ class Command(BaseCommand):
         },
         {
             'cafe': 2,
-            'drink': '토피넛 라떼',
+            'drink': '토피넛라떼',
             'caffeine': 19,
         },
         {
             'cafe': 2,
-            'drink': '피치 얼그레이',
+            'drink': '피치얼그레이',
             'caffeine': 58,
         },
         {
             'cafe': 2,
-            'drink': '아이스티 복숭아',
+            'drink': '아이스티복숭아',
             'caffeine': 19,
         },
         {
             'cafe': 3,
-            'drink': '카페 아메리카노',
+            'drink': '아메리카노',
             'caffeine': 145,
         },
         {
@@ -121,7 +121,7 @@ class Command(BaseCommand):
         },
         {
             'cafe': 3,
-            'drink': '아이스크림 카페라떼',
+            'drink': '카페라떼',
             'caffeine': 145,
         },
         {
@@ -131,22 +131,22 @@ class Command(BaseCommand):
         },
         {
             'cafe': 3,
-            'drink': '달고나 카페라떼',
+            'drink': '달고나카페라떼',
             'caffeine': 73,
         },
         {
             'cafe': 3,
-            'drink': '누가크림 카페라떼',
+            'drink': '카푸치노',
             'caffeine': 120,
         },
         {
             'cafe': 3,
-            'drink': '카라멜 마키아토',
+            'drink': '카라멜마키아토',
             'caffeine': 177,
         },
         {
             'cafe': 3,
-            'drink': '로얄 밀크티',
+            'drink': '로얄밀크티',
             'caffeine': 101,
         },
         {
