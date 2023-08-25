@@ -9,7 +9,7 @@ class UserSignUpSerializer(ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(validated_data['email'],validated_data['password'],
             **{
-                'nick_name': validated_data['nick_name'],
+                'university': validated_data['university'],
             })
         user.save()
         return user

@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'cafes',
     'reports',
     'accounts',
+
 ]
 
 MIDDLEWARE = [
