@@ -32,14 +32,14 @@ class DailyReportCreateListView(generics.ListCreateAPIView):
         cups = request.data['cups']
         cafe_name = request.data['cafe']
         cafe = Cafe.objects.get(cafe=cafe_name).id
-        drink = Drink.objects.get(drink=drink_name,cafe=cafe).id
+        drink = Drink.objects.get(drink=drink_name,cafe=cafe)
         user = request.user.id
         
         
         total =  int (drink.caffeine) * int(cups)
         dr = {
             'user': user,
-            'drink' : drink,
+            'drink' : drink.id,
             'cups' : cups,
             'total' : total
         }
